@@ -1,0 +1,16 @@
+---
+title: Binstar Command Line
+
+sub_items:
+ - id: hello
+   title: hello
+
+---
+
+{% from "macros.html" import section, subsection %}
+{% extends "layout.html" %}
+
+{% block main %}
+{% call section('hello') %}
+{% endcall %}
+{% endblock %}
