@@ -1,5 +1,7 @@
 menu:
     - title: Binstar Command Line
       url : 'index.html'
+    - title: Binstar Subcommands
+      url : 'subcommands.html'
     - title: Binstar Configuration
       url : 'configuration.html'

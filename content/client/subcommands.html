@@ -1,0 +1,112 @@
+---
+title: Binstar Subcommands
+
+sub_items:
+ - id: auth   
+   title: Manage Authorization Tokens
+ - id: channel   
+   title: Manage your binstar channels
+ - id: config   
+   title: Binstar configuration
+ - id: copy
+   title: Copy packages from one account to another
+ - id: groups
+   title: Manage Groups
+ - id: login
+   title: Authenticate a user
+ - id: logout
+   title: Log out from binstar
+ - id: package
+   title: Package utils
+ - id: register
+   title: Register a package on binstar
+ - id: remove
+   title: Remove an object from binstar
+ - id: search
+   title: Search binstar
+ - id: show
+   title: Show information about an object
+ - id: upload
+   title: Upload a file to binstar
+ - id: whoami
+   title: Print the information of the current user
+
+---
+
+{% from "macros.html" import section, subsection %}
+{% extends "layout.html" %}
+
+{% block main %}
+{% call section('auth') %}
+## Manage Authorization Tokens
+
+`binstar auth` can create or remove binstar [authentiaction tokens](../token_gen.html)
+
+To create a new token run:
+
+    binstar auth --create --name 'my-unique-name'  
+
+This will create a token that idendifies you when given to binstar. 
+The token name must be unique to your account
+
+### Remove a token
+
+    binstar auth --remove 'my-unique-name'  
+
+### Scopes
+
+You can limit the scope of operations that a token can perform. 
+For example if you are using conda or pypi
+
+To list all scopes:
+
+    binstar auth auth --list-scopes    
+
+To create a new token run with a restricted scope:
+
+    binstar auth --create --name 'my-scoped-token' --scopes 'repo conda'  
+
+
+{% endcall %}
+{% call section('channel') %}
+## Manage your binstar channels
+{% endcall %}
+{% call section('config') %}   
+## Binstar configuration
+{% endcall %}
+{% call section('copy') %}
+## Copy packages from one account to another
+{% endcall %}
+{% call section('groups') %}
+## Manage Groups
+{% endcall %}
+{% call section('login') %}
+## Authenticate a user
+{% endcall %}
+{% call section('logout') %}
+## Log out from binstar
+{% endcall %}
+{% call section('package') %}
+## Package utils
+{% endcall %}
+{% call section('register') %}
+## Register a package on binstar
+{% endcall %}
+{% call section('remove') %}
+## Remove an object from binstar
+{% endcall %}
+{% call section('search') %}
+## Search binstar
+{% endcall %}
+{% call section('show') %}
+## Show information about an object
+{% endcall %}
+{% call section('upload') %}
+## Upload a file to binstar
+{% endcall %}
+{% call section('whoami') %}
+## Print the information of the current user
+
+{% endcall %}
+
+{% endblock %}
