@@ -2,8 +2,10 @@
 title: Binstar Command Line
 
 sub_items:
- - id: hello
-   title: hello
+ - id: installing
+   title: Installing
+ - id: basics
+   title: Basics
 
 ---
 
@@ -11,6 +13,35 @@ sub_items:
 {% extends "layout.html" %}
 
 {% block main %}
-{% call section('hello') %}
+{% call section('installing') %}
+# Installing the binstar client
+
+The best way to instal the binstar command line client is with conda: 
+
+    conda install -c binstar binstar
+
+You can also install binstar with pip:
+
+    pip install binstar
+
+To download and install from source go to the binstar github repository 
+[https://github.com/binstar/binstar_client](https://github.com/binstar/binstar_client)
+
+
 {% endcall %}
+{% call section('basics') %}
+# Basics
+
+To start working with binstar you should first log in:
+
+    binstar login
+
+From here you can view, uploador remove binstar files:
+
+    binstar upload my-conda-package.tar.bz2
+    binstar show USERNAME
+    binstar show USERNAME/my-conda-package
+    
+{% endcall %}
+
 {% endblock %}
