@@ -1,0 +1,55 @@
+---
+title: Binstar Configuration
+
+sub_items:
+ - id: sites
+   title: Sites
+
+---
+
+{% from "macros.html" import section, subsection %}
+{% extends "layout.html" %}
+
+{% block main %}
+{% call section('sites') %}
+# Sites
+
+With onsite binstar, binstar.org and alpha.binstar.org it is somtimes required to quickly switch 
+between each of these sites. The binstar client now allows with with the `-s/--site` option 
+
+#### Define a new site
+
+    binstar config --set sites.sitename.url http://localhost:4990/api
+
+#### Use a site
+
+By adding `-s sitename` to any binstar command, that command will use the given site:
+
+    binstar -s sitename login
+
+Will log in to the http://localhost:4990/api site url
+
+#### Default site
+
+To omit the `-s sitename` argument, you can set a default site:
+
+    binstar config --set default_site sitename
+
+Then the simple command:
+
+    binstar login
+
+Will log in to the http://localhost:4990/api site url
+
+#### Preconfigured sites:
+
+    binstar -s binstar ...
+    binstar -s alpha ...
+
+Are included by default and will now **always** point to 
+[http://binstar.org](http://binstar.org) and 
+[http://alpha.binstar.org](http://alpha.binstar.org) respectively.
+
+{% endcall %}
+
+{% endblock %}
