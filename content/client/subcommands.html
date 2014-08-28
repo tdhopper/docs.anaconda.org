@@ -70,9 +70,31 @@ To create a new token run with a restricted scope:
 {% endcall %}
 {% call section('channel') %}
 ## Manage your binstar channels
+
+List all of your channels
+
+    binstar channel --list
+    
 {% endcall %}
 {% call section('config') %}   
 ## Binstar configuration
+
+With `binstar config` you can get set or remove binstar configuration variables. 
+This page decribes the command. For a list of available config variables go to the [binstar configuration](configuration.html) page
+
+To view your current configuration run:
+
+    binstar config --show
+
+To set a varable:
+
+    binstar config --set KEY VALUE
+
+To remove a varable:
+
+    binstar config --remove KEY
+    
+
 {% endcall %}
 {% call section('copy') %}
 ## Copy packages from one account to another
