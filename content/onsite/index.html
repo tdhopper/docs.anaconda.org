@@ -37,7 +37,6 @@ sub_items:
 {% extends "layout.html" %}
 
 {% block main %}
-## Installing On-Site Binstar
 
 On-site Binstar installation allows you to create and maintain a private version of [binstar.org](https://binstar.org)
 for easy creation and sharing of custom conda and PyPI packages within your organization.
@@ -89,14 +88,16 @@ To make sure mongo is running run:
 
 It is recommended although not required that you create a Binstar user at this time:
 
-  sudo useradd -m binstar
-  sudo mkdir -m 0770 /etc/binstar
-  sudo chown -R binstar:binstar /etc/binstar
+  useradd -m binstar
+  mkdir -m 0770 /etc/binstar
+  chown -R binstar:binstar /etc/binstar
 
-At this point, you can transition to the Binstar user account,
-as you will not need root access for any of the remaining steps:
+  # Replace <sudoers_group> with the group you setup for sudoers in your sudo config file.
+  usermod -aG <sudoers_group> binstar
 
-  sudo su - binstar
+At this point, you can transition to the Binstar user account:
+
+  su - binstar
 
 {% endcall %}
 
@@ -148,7 +149,7 @@ Finally, you may wish to automatically restart your On-site Binstar installation
 
 Create a supervisord instance:
 
-    bash binstar-install-supervisord-config.sh
+    binstar-install-supervisord-config.sh
 
 To test that the config script ran correctly run:
 
@@ -167,25 +168,23 @@ You should see somthing like:
 
 <strong>Please note:</strong> This step is optional, but highly recommended.
 
-This step rquires **sudo**:
-
-    sudo binstar-centralized-logging.sh --product-name PRODUCT_NAME
-
-If you need to swutch out of the binstar user to perform this step record the full path to the logging script with:
+Determine the **full-path** location of the logging script:
 
     which binstar-centralized-logging.sh
 
-run:
+Execute the binstar logging script to configure the remote logging.
+Remember to replace Replace `/full/path/to/` with the actual path to the `binstar-centralized-logging.sh`
+*Note: This step rquires **sudo**:*
 
     sudo /full/path/to/binstar-centralized-logging.sh --product-name PRODUCT_NAME
 
-Remember to replace Replace `/full/path/to/` with the actual path to the `binstar-centralized-logging.sh`
 
 <div class="alert alert-warning">
-    You must replace `PRODUCT_NAME` from the text above.
+    You must replace `PRODUCT_NAME` from the text above with the prodcut name you recieved in your "getting started with binstar" email.
 </div>
+
 
 {% endcall %}
 
 {%endblock%}
-Status API Training Shop Blog About © 2014 GitHub, Inc. Terms Privacy Security Contact 
+
