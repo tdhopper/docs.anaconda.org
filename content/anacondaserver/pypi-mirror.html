@@ -27,7 +27,7 @@ To create a PyPI mirror run:
 
 This will load all of the packages on pypi.python.org into the `~pypi` binstar user account.
 
-To verify that this is working you may open your browser to http://<onsite.binstar.addr>/pypi/~pypi
+To verify that this is working you may open your browser to http://<anaconda.server.addr>/pypi/~pypi
 
 
 {% endcall%}
@@ -37,7 +37,7 @@ To verify that this is working you may open your browser to http://<onsite.binst
 To configure pip to use this new mirror you must edit your `~/.pip/pip.conf` file:
 
     [global]
-    index-url = http://<onsite.binstar.ipaddress>:<port>/pypi/~pypi/simple
+    index-url = http://<anaconda.server.ipaddress>:<port>/pypi/~pypi/simple
 
 {% endcall%}
 {% call section('whitelist') %}

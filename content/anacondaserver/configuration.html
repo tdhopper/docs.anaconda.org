@@ -24,7 +24,7 @@ Set your local conda configuration to point to your On-site Binstar server.
 This is need to correctly upload your conda build packages to your On-site Binstar installation.
 
 ```
-binstar config --set url http://<onsite.binstar.ipaddress>:<port>/api
+binstar config --set url http://<anaconda.server.ipaddress>:<port>/api
 ```
 
 
@@ -36,7 +36,7 @@ To install conda packages from your On-site Binstar installation add your On-sit
 `~/.condarc` configuration file.
 
 ```
-conda config --add channels http://<onsite.binstar.ipaddress>:<port>/conda/<binstaruser>
+conda config --add channels http://<anaconda.server.ipaddress>:<port>/conda/<binstaruser>
 ```
 
 {% endcall%}
@@ -49,7 +49,7 @@ To install pypi packages from your On-site Binstar installation add your On-site
 Edit the file and add an `extra-index-url` entry to the global config section:
 
     [global]
-    extra-index-url = http://<onsite.binstar.ipaddress>:<port>/pypi/<binstaruser>/simple
+    extra-index-url = http://<anaconda.server.ipaddress>:<port>/pypi/<binstaruser>/simple
 
 {% endcall%}
 

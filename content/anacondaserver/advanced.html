@@ -58,7 +58,7 @@ Now you must restart your server
 ### Using Standard Ports
 
 The easiest way to use standard ports is to redirect traffic from
-the standard ports 80 and 443 to the Binstar server ports
+the standard ports 80 and 443 to the Anaconda Server ports
 
 
 #### HTTP
@@ -91,9 +91,9 @@ manual for more information.
 {% call section('ldap') %}
 ### Enable LDAP or Active Directory Support
 
-#### Configure Binstar to use LDAP
+#### Configure Anaconda Server to use LDAP
 
-Open the binstar configuration file */etc/binstar/config.yaml* file and add the following configuration to enable LDAP support:
+Open the Anaconda Server configuration file */etc/conda.srv/config.yaml* file and add the following configuration to enable LDAP support:
 
     LDAP: {
       # Replace with company LDAP server
@@ -119,21 +119,21 @@ Run the flask-ldap-login-check command to verify LDAP connectivity
 
     flask-ldap-login-check binstar.wsgi:app --username '<ldapUser>' --password '<ldapUserPassword>'
 
-Now restart the Binstar server to apply changes
+Now restart the Anaconda Server to apply changes
 
     supervisorctl restart all
 
-Open your browser and browse to your local binstar server installation:
+Open your browser and browse to your local Anaconda Server installation:
 
-    http://<local.binstar.srv>
+    http://<local.anaconda.srv>
 
 You should now be able to log in using your LDAP credentials
 
 {% endcall %}
 {% call section('ad') %}
-### Configure Binstar to use Active Directory
+### Configure Anaconda Server to use Active Directory
 
-Open the binstar configuration file */etc/binstar/config.yaml* file in an editor and add the following configuration to enable Active Directory support:
+Open the Anaconda Server configuration file */etc/conda.srv/config.yaml* file in an editor and add the following configuration to enable Active Directory support:
 
     LDAP : {
         'URI': 'ldap://<ldap.server.url>',
@@ -166,7 +166,7 @@ Update the *URI* <ldap.server.url> with the location of your Active Directory se
 
 
 
-Now restart the Binstar server to apply changes
+Now restart the Anaconda Server to apply changes
 
     supervisorctl restart all
 
@@ -176,19 +176,19 @@ Run the flask-ldap-login-check command to verify Active Directory connectivity
 
 You should get a response similare to the following:
 
-    [binstar.server] Started Site
+    [anaconda.server] Started Site
     Got userdata for adUser
     {'company': None, 'email': None, 'location': None, 'name': 'AD User'}
 
-Open your browser and browse to your local binstar server installation:
+Open your browser and browse to your local Anaconda Server installation:
 
-    http://<local.binstar.srv>
+    http://<local.anaconda.srv>
 
 {% endcall %}
 {% call section('tls') %}
 ### Enable TLS on LDAP/Active Directory
 
-To enable a secure **TLS** connection you need to add the following inside your LDAP configuration section of `/etc/binstar/config.yaml`:
+To enable a secure **TLS** connection you need to add the following inside your LDAP configuration section of `/etc/conda.srv/config.yaml`:
     
     LDAP={  ....
 
